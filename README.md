@@ -5,11 +5,11 @@ A ready-to-use minimalistic server powered by `NodeJS`, `Express` and `PostgreSQ
 ## Description
 
 The objective of this boilerplate server is to be an out-of-the box solution for quickly getting a server up and running, that follows good design practices and scales easily.
-
 It can be easily modified to suit any purposes and is very versatile that way.  
-The basic building block of the system is a *Unit* which can be made to represent anything depending on your use-case e.g. a Blog post, a Social Media item, eCommerce listing, stuff like that.  
-*Units* are associated with *Users* who create them.  
-More functionality can be added as needed.
+
+- The basic building block of the system is a *Unit* which can be made to represent anything depending on your use-case e.g. a Blog post, a Social Media item, eCommerce listing, stuff like that.  
+- *Units* are associated with *Users* who create them.  
+- More functionality can be added as needed.
 
 It implements authentication, caching using redis, and basic CRUD operations on *Units* and *Users*.  
 It does not use an ORM to connect to the database, so you'll need to write your own queries. ¯\\\_(ツ)_/¯
