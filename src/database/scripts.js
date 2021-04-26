@@ -13,6 +13,10 @@ const scripts = {
     FROM units ut
     FULL OUTER JOIN users us ON ut.user_id = us.id
     WHERE ut.id = $1;`,
+
+    createUnit: `INSERT INTO units 
+    (name, details, updated_at, user_id) VALUES 
+    ($1, $2, $3, $4);`,
 }
 
 module.exports = scripts;

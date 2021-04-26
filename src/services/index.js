@@ -1,4 +1,6 @@
+const moment = require('moment');
 const db = require('../database');
+const { dateFormat } = require('../constants/format');
 
 async function getUnits(args) {
     try {
@@ -38,7 +40,27 @@ async function getUnit(args) {
     }
 }
 
+async function createUnit(args) {
+    try {
+        let data = [];
+
+        if (args) {
+            const { name, details, userId } = args;
+            const updatedAt = moment().format(dateFormat);
+
+            if (name, details, updatedAt, userId) {
+                data = await db.createUnit(name, details, updatedAt, userId);
+            }
+        }
+
+        return;
+    } catch (error) {
+        throw error;
+    }
+}
+
 module.exports = {
     getUnits,
-    getUnit
+    getUnit,
+    createUnit
 }

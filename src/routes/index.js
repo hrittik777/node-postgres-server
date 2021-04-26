@@ -9,9 +9,9 @@ routes.get('/units', handlers.getUnits);
 
 routes.get('/unit/:unitId', handlers.getUnit);
 
-routes.post('/unit');
+routes.post('/unit', handlers.createUnit);
 
-routes.put('/unit/:unitId');
+routes.put('/unit/:unitId', handlers.updateUnit);
 
 routes.delete('/unit/:unitId');
 

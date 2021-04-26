@@ -41,7 +41,24 @@ async function getUnit(request, response) {
     }
 }
 
+async function createUnit(request, response) {
+    try {
+        let data = [];
+        let args = {};
+
+        if (Object.keys(request.body).length > 0) {
+            args = request.body;
+            data = await services.createUnit(args);
+        }
+
+        return response.status(200).json(data);
+    } catch (error) {
+        throw error;
+    }
+}
+
 module.exports = {
     getUnits,
-    getUnit
+    getUnit,
+    createUnit
 }

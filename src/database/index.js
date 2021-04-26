@@ -13,8 +13,13 @@ async function getUnit(unitId) {
     return pool.query(scripts.getUnit, [unitId]).then(data => data.rows);
 }
 
+async function createUnit(name, details, updatedAt, userId) {
+    return pool.query(scripts.createUnit, [name, details, updatedAt, userId]).then(data => data.rows);
+}
+
 module.exports = {
     getUnitsByName,
     getUnits,
-    getUnit
+    getUnit,
+    createUnit
 }
