@@ -17,6 +17,10 @@ const scripts = {
     createUnit: `INSERT INTO units 
     (name, details, updated_at, user_id) VALUES 
     ($1, $2, $3, $4);`,
+
+    updateUnit: `UPDATE units set name=$1, details=$2, updated_at=$3, user_id=$4 WHERE id=$5`,
+
+    deleteUnit: `DELETE FROM units WHERE id=$1;`
 }
 
 module.exports = scripts;

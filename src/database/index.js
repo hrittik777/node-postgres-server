@@ -17,9 +17,19 @@ async function createUnit(name, details, updatedAt, userId) {
     return pool.query(scripts.createUnit, [name, details, updatedAt, userId]).then(data => data.rows);
 }
 
+async function updateUnit(name, details, updatedAt, userId, unitId) {
+    return pool.query(scripts.updateUnit, [name, details, updatedAt, userId, unitId]).then(data => data.rows);
+}
+
+async function deleteUnit(unitId) {
+    return pool.query(scripts.deleteUnit, [unitId]).then(data => data.rows);
+}
+
 module.exports = {
     getUnitsByName,
     getUnits,
     getUnit,
-    createUnit
+    createUnit,
+    updateUnit,
+    deleteUnit
 }

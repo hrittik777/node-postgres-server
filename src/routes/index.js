@@ -13,7 +13,7 @@ routes.post('/unit', handlers.createUnit);
 
 routes.put('/unit/:unitId', handlers.updateUnit);
 
-routes.delete('/unit/:unitId');
+routes.delete('/unit/:unitId', handlers.deleteUnit);
 
 /* USERS */
 routes.get('/users');

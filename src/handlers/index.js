@@ -1,7 +1,8 @@
 
 const services = require('../services');
+const handleError = require('../utils/handle-error');
 
-async function getUnits(request, response) {
+async function getUnits(request, response, next) {
     try {
         let data = [];
         let args = {};
@@ -18,18 +19,18 @@ async function getUnits(request, response) {
 
         return response.status(200).json(data);
     } catch (error) {
-        throw error;
+        return response.status(400).json(handleError(next, 'badRequest', error));
     }
 }
 
-async function getUnit(request, response) {
+async function getUnit(request, response, next) {
     try {
         let data = [];
         let args = {};
 
         if (Object.keys(request.params).length > 0) {
             if (request.params.unitId) {
-                args.unitId = request.params.unitId;
+                args.unitId = parseInt(request.params.unitId);
             }
 
             data = await services.getUnit(args);
@@ -37,11 +38,11 @@ async function getUnit(request, response) {
 
         return response.status(200).json(data);
     } catch (error) {
-        throw error;
+        return response.status(400).json(handleError(next, 'badRequest', error));
     }
 }
 
-async function createUnit(request, response) {
+async function createUnit(request, response, next) {
     try {
         let data = [];
         let args = {};
@@ -53,12 +54,54 @@ async function createUnit(request, response) {
 
         return response.status(200).json(data);
     } catch (error) {
-        throw error;
+        return response.status(400).json(handleError(next, 'badRequest', error));
+    }
+}
+
+async function updateUnit(request, response, next) {
+    try {
+        let data = [];
+        let args = {};
+
+        if (Object.keys(request.body).length > 0 && Object.keys(request.params).length > 0) {
+            args = request.body;
+
+            if (request.params.unitId) {
+                args.unitId = parseInt(request.params.unitId);
+            }
+
+            data = await services.updateUnit(args);
+        }
+
+        return response.status(200).json(data);
+    } catch (error) {
+        return response.status(400).json(handleError(next, 'badRequest', error));
+    }
+}
+
+async function deleteUnit(request, response, next) {
+    try {
+        let data = [];
+        let args = {};
+
+        if (Object.keys(request.params).length > 0) {
+            if (request.params.unitId) {
+                args.unitId = parseInt(request.params.unitId);
+            }
+
+            data = await services.deleteUnit(args);
+        }
+
+        return response.status(200).json(data);
+    } catch (error) {
+        return response.status(400).json(handleError(next, 'badRequest', error));
     }
 }
 
 module.exports = {
     getUnits,
     getUnit,
-    createUnit
+    createUnit,
+    updateUnit,
+    deleteUnit
 }
