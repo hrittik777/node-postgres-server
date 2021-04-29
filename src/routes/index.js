@@ -16,16 +16,21 @@ routes.put('/unit/:unitId', handlers.updateUnit);
 routes.delete('/unit/:unitId', handlers.deleteUnit);
 
 /* USERS */
-routes.get('/users');
+routes.get('/user/:userId', handlers.getUser);
 
-routes.get('/user/:userId');
+routes.get('/user/:userId/units', handlers.getUserUnits);
 
-routes.get('/user/:userId/units');
+routes.put('/user/:userId', handlers.updateUser);
 
-routes.post('/user');
+routes.delete('/user/:userId', handlers.deleteUser);
 
-routes.put('/user/:userId');
+/* AUTH */
+routes.post('/register');
 
-routes.delete('/user/:userId');
+routes.post('/confirm/:userId');
+
+routes.post('/login');
+
+routes.post('/logout');
 
 module.exports = routes;

@@ -54,11 +54,26 @@ The server exposes the following endpoints:
         ```
     - **DELETE /unit/<unit_id>** = delete unit with the given ID
 
-- Users
+- Users:
     - **GET /user/<user_id>** = get details of user with the given ID
     - **GET /user/<user_id>/units** = get units of the user with the given ID
     - **PUT /user/<user_id>** = edit user with the given ID
+    ```
+    {
+        "name": "testupdate",
+        "email": "testupdate",
+        "phone": "testupdate",
+        "username": "testupdate",
+        "password": "testupdate"
+    }
+    ```
     - **DELETE /user/<user_id>** = delete user with the given ID
+
+- Auth:
+    - **POST /register** = register new user
+    - **POST /confirm/<user_id>** = confirm user email
+    - **POST /login** = sign user in
+    - **POST /logout** = sign uer out
 
 
 

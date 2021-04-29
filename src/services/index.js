@@ -2,6 +2,11 @@ const moment = require('moment');
 const db = require('../database');
 const { dateFormat } = require('../constants/format');
 
+/**
+ * 
+ * @param {*} args 
+ * @returns 
+ */
 async function getUnits(args) {
     try {
         let data = [];
@@ -22,6 +27,11 @@ async function getUnits(args) {
     }
 }
 
+/**
+ * 
+ * @param {*} args 
+ * @returns 
+ */
 async function getUnit(args) {
     try {
         let data = [];
@@ -40,6 +50,11 @@ async function getUnit(args) {
     }
 }
 
+/**
+ * 
+ * @param {*} args 
+ * @returns 
+ */
 async function createUnit(args) {
     try {
         let data = [];
@@ -59,6 +74,11 @@ async function createUnit(args) {
     }
 }
 
+/**
+ * 
+ * @param {*} args 
+ * @returns 
+ */
 async function updateUnit(args) {
     try {
         let data = [];
@@ -80,12 +100,17 @@ async function updateUnit(args) {
             }
         }
 
-        return;
+        return true;
     } catch (error) {
         throw error;
     }
 }
 
+/**
+ * 
+ * @param {*} args 
+ * @returns 
+ */
 async function deleteUnit(args) {
     try {
         let data = [];
@@ -98,7 +123,110 @@ async function deleteUnit(args) {
             }
         }
 
+        return true;
+    } catch (error) {
+        throw error;
+    }
+}
+
+/**
+ * 
+ * @param {*} args 
+ * @returns 
+ */
+async function getUser(args) {
+    try {
+        let data = [];
+
+        if (args) {
+            const { userId } = args;
+
+            if (userId) {
+                data = await db.getUser(userId);
+            }
+        }
+
         return data;
+    } catch (error) {
+        throw error;
+    }
+}
+
+/**
+ * 
+ * @param {*} args 
+ * @returns 
+ */
+async function getUserUnits(args) {
+    try {
+        let data = [];
+
+        if (args) {
+            const { userId } = args;
+
+            if (userId) {
+                data = await db.getUserUnits(userId);
+            }
+        }
+
+        return data;
+    } catch (error) {
+        throw error;
+    }
+}
+
+/**
+ * 
+ * @param {*} args 
+ * @returns 
+ */
+async function updateUser(args) {
+    try {
+        let data = [];
+
+        if (args) {
+            let { name, email, phone, username, password, userId } = args;
+
+            if (userId) {
+                data = await db.getUser(userId);
+            }
+
+            name = name || data[0].name;
+            email = email || data[0].email;
+            phone = phone || data[0].phone;
+            username = username || data[0].username;
+            password = password || data[0].password;
+            userId = userId || parseInt(data[0].userId);
+
+            if (name, email, phone, username, password, userId) {
+                data = await db.updateUser(name, email, phone, username, password, userId);
+            }
+        }
+
+        return true;
+    } catch (error) {
+        throw error;
+    }
+}
+
+/**
+ * 
+ * @param {*} args 
+ * @returns 
+ */
+async function deleteUser(args) {
+    try {
+        let data = [];
+
+        if (args) {
+            const { userId } = args;
+
+            if (userId) {
+                data = await db.deleteUser(userId);
+            }
+        }
+
+        return true;
     } catch (error) {
         throw error;
     }
@@ -109,5 +237,9 @@ module.exports = {
     getUnit,
     createUnit,
     updateUnit,
-    deleteUnit
+    deleteUnit,
+    getUser,
+    getUserUnits,
+    updateUser,
+    deleteUser
 }
