@@ -1,6 +1,6 @@
 # node-postgres-server
 
-A ready-to-use minimalistic server powered by `NodeJS`, `Express` and `PostgreSQL`.
+A ready-to-use scalable `NodeJS`, `Express` and `PostgreSQL` monolith server boilerplate.
 
 ## Description
 
