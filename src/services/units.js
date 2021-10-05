@@ -68,7 +68,7 @@ async function createUnit(args) {
             }
         }
 
-        return;
+        return data[0];
     } catch (error) {
         throw error;
     }
@@ -100,7 +100,7 @@ async function updateUnit(args) {
             }
         }
 
-        return true;
+        return data[0];
     } catch (error) {
         throw error;
     }

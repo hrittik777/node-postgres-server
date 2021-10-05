@@ -8,6 +8,7 @@ CREATE TABLE public.users (
 	phone varchar(250) NULL,
 	username varchar NOT NULL,
 	"password" varchar NOT NULL,
+	confirmed bool NULL,
 	CONSTRAINT users_pkey PRIMARY KEY (id)
 );
 

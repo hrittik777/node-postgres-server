@@ -76,7 +76,7 @@ async function updateUser(args) {
             }
         }
 
-        return true;
+        return data[0];
     } catch (error) {
         throw error;
     }

@@ -1,4 +1,4 @@
-const pool = require('./pool');
+const pool = require('./config/pool');
 const scripts = require('./scripts');
 
 async function getUnitsByName(name) {
